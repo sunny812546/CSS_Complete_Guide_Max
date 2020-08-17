@@ -1,0 +1,512 @@
+--------------Attributes Selectors---------------
+[disabled]{
+    color:red;
+}
+
+--------------Inheritance-----------
+<section>
+  <p>
+  This is P...
+  </p>
+</section>
+
+section{
+    font-family:arial;
+}
+section > p{
+    font-family:inherit;
+}
+
+----------------Types of Combinators------------
+<div>
+    <p>
+    </p>
+    <h1>
+    </h1>
+</div>
+
+1.Adjacent Sibling(h2 + p)
+-same level
+-directly follow h2 after p
+2.General Sibling(h2 ~ p)
+-same level
+-Not directly follow
+3.Child (div > p)
+-parent and Child
+-<div><p></p></div>
+4.Descendant (div p)
+-parent Child
+-<div> <p></p></div>
+-all the p which in div
+
+
+----------------Margin Collasping----------------
+-Be carefull when you give bottom and top Margin
+-because top margin of second block overlapping with first block bottom margin
+
+--------------ShortHand Properties---------
+border:1px soild gray;
+margin: 1px 1px;
+margin:2px;
+
+---------------100% height and width--------
+-always refer to the parents
+-be carefull with 100% height because 
+-100% width == block 
+
+-------------box-sizing--------
+1.content-box -> only content height and width
+2.border-box -> include border+padding+content
+*{
+    box-sizing:border-box;
+}
+
+-----------inline-Not set margin top/bottom-------------
+
+------------display------------
+1.inline
+2.block
+3.none
+4.inline-block //here you can give margin top/bottom
+
+--------vertical-align------------
+prob:brandname font-size more and nav item small
+-verticcal-align:middle   use in both
+
+----------Pseudo classes and Pseudo elements---------
+class  -- :class name
+elements -- :: elements name
+
+----------::first-letter--------
+p::first-letter{
+    color:red;
+    font-size:50px;
+}
+
+
+--------:after---------
+-append after a
+a:after {
+    content:"(link)";
+    color:red;
+}
+
+--------Grouping same styles in one box---------
+
+-============================Example=====================================-
+<style>
+    * {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+}
+
+#product-overview {
+    background: url("freedom.jpg");
+    width: 100%;
+    height: 528px;
+    padding: 10px;   
+}
+
+.section-title {
+    color: #2ddf5c;
+}
+
+#product-overview h1 {
+    color: white;
+    font-family: 'Anton', sans-serif;
+}
+
+/* h1 {
+    font-family: sans-serif;
+} */
+
+.main-header {
+    width: 100%;
+    background: #2ddf5c;
+    padding: 8px 16px;
+}
+
+.main-header > div {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.main-header__brand {
+    color: #0e4f1f;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.main-nav {
+    display: inline-block;
+    text-align: right;
+    width: calc(100% - 74px);
+    vertical-align: middle;
+}
+
+.main-nav__items {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.main-nav__item {
+    display: inline-block;
+    margin: 0 16px;
+}
+
+.main-nav__item a {
+    text-decoration: none;
+    color: #0e4f1f;
+    font-weight: bold;
+    padding: 3px 0;
+}
+
+.main-nav__item a:hover,
+.main-nav__item a:active {
+    color: white;
+    border-bottom: 5px solid white;
+}
+
+.main-nav__item--cta a {
+    color: white;
+    background: #ff1b68;
+    padding: 8px 16px;
+    border-radius: 8px;
+}
+
+.main-nav__item--cta a:hover,
+.main-nav__item--cta a:active {
+    color: #ff1b68;
+    background: white;
+    border: none;
+}
+
+p::first-letter{
+    color:red;
+    font-size:50px;
+}
+</style>
+<body>
+    <header class="main-header">
+        <div>
+            <a href="index.html" class="main-header__brand">
+                uHost
+            </a>
+        </div>
+        <nav class="main-nav">
+            <ul class="main-nav__items">
+                <li class="main-nav__item">
+                    <a href="packages/index.html">Packages</a>
+                </li>
+                <li class="main-nav__item">
+                    <a href="customers/index.html">Customers</a>
+                </li>
+                <li class="main-nav__item main-nav__item--cta">
+                    <a href="start-hosting/index.html">Start Hosting</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="product-overview">
+            <h1>Get the freedom you deserve.</h1>
+        </section>
+        <section id="plans">
+            <h1 class="section-title">Choose Your Plan</h1>
+            <p>Make sure you get the most for your money!</p>
+        </section>
+    </main>
+</body>
+
+</html>
+---------last order style wins----------------
+
+---------a.active{}-------
+
+-----------!important--------------
+
+----------a:not(.active){}--------
+
+----------Position elements---------------
+Static - this is the default value, all elements are in order as they appear in the document "default" (properties Not applied in static)
+
+Absolute - the element is positioned absolutely to its first positioned parent.(Ae bhai pehle dekhenge koi mera bap hai he to usko relative manke move hona magta apun)
+
+Relative - the element is positioned relative to its normal position.(Ae bhai apni jagase hi move honge)
+In the parents csss -- html,body{overflow:hidden;}(Ae bhai ko limit me hi rakhega bap se age nai jayega)
+
+Fixed - the element is positioned related to the browser window.(this related to viewport)
+
+sticky - the element is positioned based on the user's scroll position.
+
+z-index - ordering
+
+properties - top,bottom,left,right
+
+Using Fixed makes navbar
+
+{
+    position:fixed;
+    top:0;
+    left:0;
+}
+
+Using Fixed makes backgroundImage
+{
+    background:url(");
+    width:100%;
+    height:100%;
+    position:fixed;
+    z-index:-1;
+}
+...........................................................................................................
+-------------background----------------............................................................
+-background-image:url("")
+-background-size:cover/container; 
+-background-position:20px 10px;/centred;/left 10% bottom 100%;
+-background-repeat:no-repeat;
+-background-origin:border-box;
+-background-clip:padding-box;
+-background-attachment:fixed;
+<div>
+    <img>
+</div>
+div{
+    box-shadow
+}
+img{
+    vertical-align:top;
+}
+
+-linear-gradient
+-radial-gradient
+-filter 
+-SVG
+------------------------------------------------------------------------
+-------------------------UNITS----------------------------------
+-px
+-%
+-min-heghit & max-height
+-rem & em   
+-vw & vh 
+
+---->"%"
+      -Fixed-position : refter to the Viewport so,100% directly refer to the viewport
+      -Absolute : Refer to the Ancestor + content + Padding where Postion Ab + re + fixed + sticky
+      -Static & relative : Refer to the Ancestor + content  Where Block Level element 
+
+      .BackDrop{
+          postion:absolute;
+          z-index : 100;
+          width : 100%;//100vw
+          height : 100%;//100vh
+          background:rgba(0,0,0,0.5);
+      }
+-------> "rem" VS "em" : 1 rem == 16px;
+----->Which unit Should I choose?
+       ---> font-size(root elements) -  "%"
+       ---> Font-size                -  "rem"
+       ---> Padding border margin    -  "px" or "rem"
+       ---> width height             -  "%"  "vh" "vw"   
+       ---> top bottom left right    -  "%"
+.....................................................................................
+-------------------Responsive Design--------------------------------
+
+view port meta tag (Actual site to device viewport): <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+Media Queries : Change Design Depending On size / Design Change defined by us
+
+
+------------------Advance Attribute Selectors------------------
+
+Selector	         Example	                   Example description
+[attribute]	        [target]	                   Selects all elements with a target attribute
+[attribute=value]	[target=_blank]	           Selects all elements with target="_blank"
+[attribute~=value]	[title~=flower]        	   Selects all elements with a title attribute containing the word "flower"
+[attribute|=value]	[lang|=en]	               Selects all elements with a lang attribute value starting with "en"
+[attribute^=value]	a[href^="https"]	       Selects every <a> element whose href attribute value begins with "https"
+[attribute$=value]	a[href$=".pdf"]	           Selects every <a> element whose href attribute value ends with ".pdf"
+[attribute*=value]	a[href*="w3schools"]	   Selects every <a> element whose href attribute value contains the substring "w3schools"
+.........................................................................
+
+-----------------------Font Properties------------------------------------
+
+-----------------------Flexbox-----------------------------------------
+Parent = flex Container 
+---->Property : 
+                display:flex;  //block  inline-flex->inline block
+                Main-axis vs Cross-axis
+                flex-direction: row; //row  main left right and cross left to bottom
+                flex-direction: row-reverse ; //row main  right left and cross right to bottom
+                flex-direction: cloumn;  //clo 
+                flex-direction: cloumn-reverse;  //clo 
+                flex-wrap: nowrap;  // no wrap
+                flex-wrap: wrap;  // start making wrap
+                flex-wrap: wrap-reverse;   //order changed
+                flex-flow: row wrap;
+                justify-content: center // center in main axis
+                align-items: stretch || center || flex-start || flex-end ; //impact on cross axis
+                align-content : center;
+
+Children = Flex Items 
+---->Property :
+                order: 0,2,3  //items order
+                flex-grow: 0; //growing size depends on number
+                flex-shrink: 1; // inverse of grow
+                align-self: flex-start; //individual alignment
+                flex-basis: 300px;
+
+----------------------------Grid(Crucial)------------------
+---->Simple Grid 
+                -container{
+                    display:grid;  //define grid
+                    grid-template-columns:200px 2fr 20% auto; //define how many colms are there..
+                    grid-template-rows:5rem 2.5rem; //define how many rows are there..
+
+                    grid-template-columns:repeat(4,25%); //shorter way define
+                    grid-template-rows:5rem minmax(10px,200px//auto) 100px;
+
+                    grid-column-gap:20px; //define gap
+                    grid-row-gap:10px;    // define gap
+
+                    grid-template-areas:"header header header header"
+                                        "side  side main main"
+                                        "footer footer footer footer";
+                    
+                    grid-template-rows:3.5rem auto fir-content(8rem); 
+                    grid-template-areas:"header header header header"
+                                        ". . main main"
+                                        "footer footer footer footer";
+                    justify-items: streched;
+                    align-items:end;
+                    justify-content:streched;
+                    align-content:end;
+
+                    @media (max-eidth:40rem){
+                         grid-template-rows:3.5rem auto fir-content(8rem) auto; 
+                         grid-template-areas:"header header header header"
+                                        "main main main main"
+                                        "side side side side"
+                                        "footer footer footer footer";
+                    }
+                       
+                    grid-auto-rows:minmax(8rem,auto);
+                    grid-auto-flow:column;
+                    grid-auto-columns:5rem;
+
+                    ->explicit & implicit
+
+                    ->auto-fill vs auto-fit
+                    ->grid-template-columns:repeat(auto-fill,10rem);
+
+                    ->dense
+                }
+
+                -.el3{
+                    grid-column-start:3; // col starting index
+                    grid-row-start:3;   // row staring index
+                    grid-column-end:5;  // col ending index
+                    grid-row-end:5;    // row ending index
+
+                    grid-column-end:span 5;  // col ending index with 5 cells
+
+                    grid-column:1 / -1; //shorthand here, -1 define last index
+                }
+
+---------------------------------------------------------------------------------------------------------
+
+-----------------------------Variables--------------------------
+:root{
+ --my-color:#202020;
+}
+
+.element-1{
+    color:var(--my-color);
+}
+
+--------------------------Vendor Prefixes----------------
+---------------------------------------------------------
+
+------------------------Class Names Correcty ----------------
+className: class-name
+BEM :-
+        .BLOCK__ELEMENT--MODIFIER
+        Example:- .menu-main__item--size-big
+-------------------------------------------------------------
+---------------SASS/SCSS------------------------------
+
+For Window User: First Install "Ruby"
+
+$ gem install sass
+$ sass main.scss main.css
+$sass --watch style.scss:style.css
+
+Using CSS in sass So, SASS -> SCSS
+
+====>Features:
+                -Nested elements :
+                div{
+                    li{
+
+                    }
+                }
+                
+                -adding nested properties :
+                 font{
+                     weight:
+                     family:
+                 }
+
+                -variables :
+                  $main-color:#202020;
+
+                  replace by "$main-color"
+
+                -lists and maps :
+                    $main-border : 0.5 solid $main-color;
+                    $colors: (main:#521751,secondary:#259564); //map-get($colors,main)
+
+                -built-in-functions :
+                        lighten($main-color,70%)
+                
+                -Airthmetics Operation :
+
+                -Import better :
+                        _variables.scss
+                           {
+                               all variables
+                           }     
+
+                        main.scss{
+                            @import "_variables.scss"; 
+                        }
+                
+                -media Queries :
+                        html{
+                            @media {
+                                
+                            }
+                        }
+                
+                -Inheritance :
+                            @extend .class-name;
+
+                -mixin :
+                    @mixin display-flex(){
+                        display:
+                        display:
+                    }
+
+                    @include display-flex();
+
+                -connecter ("&") :
+                        &:hover{
+                            
+                        }
+
